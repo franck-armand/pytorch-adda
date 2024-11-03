@@ -10,6 +10,9 @@ class LungCancerDataset(Dataset):
     def __init__(self, csv_file, train=True, transform=None, train_split=0.8):
         self.data = pd.read_csv(csv_file)
         self.transform = transform
+        
+        # Map string labels to integers
+        self.label_map = {'Benign': 0, 'Malignant': 1, 'Normal': 2}
 
         # Split data into training and evaluation sets based on the train_split ratio
         split_index = int(len(self.data) * train_split)
@@ -17,14 +20,17 @@ class LungCancerDataset(Dataset):
             self.data = self.data[:split_index]
         else:
             self.data = self.data[split_index:]
-    
+
     def __len__(self):
         return len(self.data)
     
     def __getitem__(self, idx):
         img_path = self.data.iloc[idx, 0]
-        label = self.data.iloc[idx, 1]
+        label_str = self.data.iloc[idx, 1]
 
+        # Convert label from string to integer
+        label = self.label_map[label_str]
+        
         # Load image
         image = Image.open(img_path).convert('L')  # Convert to grayscale if necessary
 
