@@ -7,12 +7,19 @@ dataset_std_value = 0.5
 dataset_mean = (dataset_mean_value,)
 dataset_std = (dataset_std_value,)
 batch_size = 50
-image_size = 64
+image_size = 28
 
 # params for source dataset
-src_dataset = "MNIST"
-src_encoder_restore = "snapshots/ADDA-source-encoder-final.pt"
-src_classifier_restore = "snapshots/ADDA-source-classifier-final.pt"
+# src_dataset = "MNIST"
+# src_encoder_restore = "snapshots/ADDA-source-encoder-final.pt"
+# src_classifier_restore = "snapshots/ADDA-source-classifier-final.pt"
+# src_model_trained = True
+
+# params for lung cancer dataset
+src_dataset = "LUNG_CANCER"
+src_dataset_path = r"data/lung_cancer_data.csv"
+src_encoder_restore = "snapshots/ADDA-source-encoder-lung.pt"
+src_classifier_restore = "snapshots/ADDA-source-classifier-lung.pt"
 src_model_trained = True
 
 # params for target dataset
@@ -28,7 +35,7 @@ d_output_dims = 2
 d_model_restore = "snapshots/ADDA-critic-final.pt"
 
 # params for training network
-num_gpu = 1
+num_gpu = 2
 num_epochs_pre = 100
 log_step_pre = 20
 eval_step_pre = 20
