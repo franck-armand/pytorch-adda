@@ -23,7 +23,13 @@ src_classifier_restore = "snapshots/ADDA-source-classifier-lung.pt"
 src_model_trained = True
 
 # params for target dataset
-tgt_dataset = "USPS"
+# tgt_dataset = "USPS"
+# tgt_encoder_restore = "snapshots/ADDA-target-encoder-final.pt"
+# tgt_model_trained = True
+
+# params for target dataset lung cqncer ct scan 
+tgt_dataset = "LUNG_CANCER_CT"
+tgt_dataset_path = r"data/lung_cancer_ct_scan_train.csv"
 tgt_encoder_restore = "snapshots/ADDA-target-encoder-final.pt"
 tgt_model_trained = True
 
