@@ -8,7 +8,7 @@ import torch.backends.cudnn as cudnn
 from torch.autograd import Variable
 
 import params
-from datasets import get_mnist, get_usps, get_lung_cancer
+from datasets import get_mnist, get_usps, get_lung_cancer, get_lung_cancer_ct
 
 
 def make_variable(tensor, volatile=False):
@@ -61,6 +61,8 @@ def get_data_loader(name, train=True):
         return get_mnist(train)
     elif name == "LUNG_CANCER":
         return get_lung_cancer(params.src_dataset_path, train)
+    elif name == "LUNG_CANCER_CT":
+        return get_lung_cancer_ct(params.tgt_dataset_path, train)
     elif name == "USPS":
         return get_usps(train)
 
